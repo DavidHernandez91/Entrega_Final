@@ -1,0 +1,17 @@
+{% extends "NewHome/base.html" %}
+
+{% block main %}
+<p>
+    <h1>{{object.Propiedad_Direccion}}</h1>
+    <br>
+    <img src="{{ object.imagen.url }}" width="480px" height="100%">
+    <br>
+    Descripcion:{{object.Propiedad_Descripcion}}
+    <br>
+    Habitaciones: {{object.Numero_Habitaciones}}
+    <br>
+    Precio: {{object.Propiedad_Costo}}
+    <br>
+    <a href="{% url 'propiedades-list' %}"> volver</a>
+</p>
+{% endblock %}

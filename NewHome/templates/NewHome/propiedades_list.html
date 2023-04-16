@@ -1,0 +1,21 @@
+{% extends "NewHome/base.html" %}
+
+{% block main %}<ul>
+    <h1> Lista de Propiedades</h1>
+
+    {% if  not propiedades %}
+        <h2>NO EXISTEN PROPIEDADES REGISTRADAS</h2>
+    {%endif %}
+
+    {% for propiedades in object_list  %}
+    <li>
+        {{propiedades}} 
+        <a href="{% url 'propiedades-detail' propiedades.id %}" > Detalle</a>
+        {% if user.is_authenticated and propiedades.publisher == user %}
+            <a href="{% url 'propiedades-update' propiedades.id %}" > Actualizar</a>
+            <a href="{% url 'propiedades-delete' propiedades.id %}" > Borrar</a>
+        {% endif %}
+    </li>
+    {% endfor %} 
+    </ul>
+{% endblock %}
