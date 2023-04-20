@@ -10,7 +10,7 @@ def index(request):
     context = {
         "propiedades": Propiedades.objects.all()
     }
-    return render(request, "NewHome/index.html", context)
+    return render(request,"NewHome/index.html", context)
 
 class PropiedadesCreate(LoginRequiredMixin, CreateView):
     model = Propiedades
@@ -64,4 +64,14 @@ class Login(LoginView):
 
 class Logout(LogoutView):
     template_name = 'registration/logout.html'
+
+class ProfileCreate(LoginRequiredMixin, CreateView):
+    model = Profile
+    success_url = reverse_lazy("index")
+    fields = ['Nombre','Descripcion',
+             'Email','Web','imagen']
+
+class ProfileUpdate(LoginRequiredMixin,UpdateView):
+    model = Profile
+    fields = '__all__'
 

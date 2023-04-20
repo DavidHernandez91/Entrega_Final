@@ -56,6 +56,11 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
+      {% if user.profile.image %}  
+      <a href="{% url 'profile-update' user.profile.id %}">
+      <img src="{{user.profiles.imagen.url}}" height="100%" width="36px" style="border-radius: 50%; margin-right:10px">
+      </a>
+      {% endif %}
       <a class="navbar-brand" href="{% url 'index' %}">NewHome</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -93,7 +98,7 @@
 
   <!-- FOOTER -->
   <footer class="container">
-    <p class="float-end"><a href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Back to top</a></p>
+    <p class="float-end"><a href="{% url 'index' %}">Back to top</a></p>
     <p>© 2017–2021 Company, Inc. · <a href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Privacy</a> · <a href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Terms</a></p>
   </footer>
   

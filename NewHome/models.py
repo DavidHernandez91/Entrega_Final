@@ -7,7 +7,7 @@ class Propiedades(models.Model):
     Numero_Habitaciones = models.PositiveIntegerField()
     Propiedad_Costo = models.PositiveIntegerField()
     publisher = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="publisher")
-    imagen = models.ImageField(upload_to="posts", null=True, blank=True)
+    imagen = models.ImageField(upload_to="propiedades", null=True, blank=True)
     Fecha_Publicacion = models.DateField(auto_now_add = True)
 
     def __str__(self):
@@ -18,5 +18,5 @@ class Profile(models.Model):
     Nombre = models.CharField(max_length=100)
     Descripcion = models.CharField(max_length=100)
     Email = models.EmailField(blank=True)
-    Web = models.URLField(null=True)
+    Web = models.URLField(null=True,blank=True)
     imagen = models.ImageField(upload_to="profiles", null=True, blank=True)
