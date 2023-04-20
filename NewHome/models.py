@@ -7,7 +7,7 @@ class Propiedades(models.Model):
     Numero_Habitaciones = models.PositiveIntegerField()
     Propiedad_Costo = models.PositiveIntegerField()
     publisher = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="publisher")
-    imagen = models.ImageField(upload_to="propiedades", null=True, blank=True)
+    imagen = models.ImageField(upload_to="propiedades", null=False, blank=False)
     Fecha_Publicacion = models.DateField(auto_now_add = True)
 
     def __str__(self):

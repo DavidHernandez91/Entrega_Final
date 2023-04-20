@@ -4,7 +4,9 @@
 <p>
     <h1>{{object.Propiedad_Direccion}}</h1>
     <br>
-    <img src="{{ object.imagen.url }}" width="480px" height="100%">
+    {% if object.imagen %}
+      <img src="{{ object.imagen.url }}" width="480px" height="100%">
+    {% endif %}
     <br>
     Descripcion:{{object.Propiedad_Descripcion}}
     <br>

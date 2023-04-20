@@ -5,7 +5,7 @@
 <main>
 
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner"> 
+    <div class="carousel-inner">
       {% for propiedad in propiedades %}
           {% if forloop.first %}
             <div class="carousel-item active">
@@ -20,10 +20,11 @@
                 <p><a class="btn btn-lg btn-warning" href="{% url 'propiedades-detail' propiedad.id %}">ver mas</a></p>
               </div>
             </div>
-          </div
-          
+          </div>
+    
       {% endfor %}
-      
+    </div>
+</div>
       
 
     
@@ -64,35 +65,29 @@
 
     <!-- START THE FEATURETTES -->
 
+    {% for propiedad in propiedades %} 
+     
     
     <hr class="featurette-divider">
 
-    {% for propiedad in propiedades %}
-
-        <img src="{{ propiedad.imagen.url }}" height="400" width="400">
     <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Costo: {{propiedad.Propiedad_Costo}}</h2>
-        <p class="lead">Publicado el: {{propiedad.Fecha_Publicacion}}</p>
+      <div class="col-md-7">
+        <h2 class="featurette-heading"> {{propiedad.Propiedad_Direccion}} <span class="text-muted">Costo:{{propiedad.Propiedad_Costo}}</span></h2>
+        <p class="lead">{{propiedad.Propiedad_Descripcion}}</p>
       </div>
-      <div class="col-md-5 order-md-1">
-        
-          
-    {% endfor %}
-
-
+      <div class="col-md-5">
+        <img src="{{ propiedad.imagen.url }}" height="300" width="300">
       </div>
     </div>
 
+    <hr class="featurette-divider">
+    {% endfor %} 
     
-
+    <hr class="featurette-divider">
 
     <!-- /END THE FEATURETTES -->INDEX.
 
   </div><!-- /.container -->
-
-
-  <!-- FOOTER -->
  
-  
+</main>
 {% endblock %}

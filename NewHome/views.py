@@ -71,6 +71,12 @@ class ProfileCreate(LoginRequiredMixin, CreateView):
     fields = ['Nombre','Descripcion',
              'Email','Web','imagen']
 
+    def form_valid(self, form):
+        profile = form.save(commit=False)
+        profile.user = self.request.user
+        profile.save()
+        return super().form_valid(form)
+
 class ProfileUpdate(LoginRequiredMixin,UpdateView):
     model = Profile
     fields = '__all__'

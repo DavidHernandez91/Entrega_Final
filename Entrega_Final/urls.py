@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from NewHome.views import index, PropiedadesList, PropiedadesDetail, PropiedadesCreate, PropiedadesUpdate, PropiedadesDelete, SignUp, Login, Logout, ProfileUpdate
+from NewHome.views import index, PropiedadesList, PropiedadesDetail, PropiedadesCreate, PropiedadesUpdate, PropiedadesDelete, SignUp, Login, Logout, ProfileUpdate, ProfileCreate
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -30,7 +30,10 @@ urlpatterns = [
     path('signup/',SignUp.as_view(), name="signup"),
     path('login/', Login.as_view(), name="login"),
     path('logout/', Logout.as_view(), name="logout"),
+    path('profile/create', ProfileCreate.as_view(), name="profile-create"),
     path('profile/<pk>/update', ProfileUpdate.as_view(), name="profile-update"),
+    
+
     
 ]
 
