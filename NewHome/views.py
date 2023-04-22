@@ -35,7 +35,12 @@ class PropiedadesDetail(DetailView):
 class PropiedadesUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Propiedades
     success_url = reverse_lazy("index")
-    fields = '__all__'
+    fields = ['Propiedad_Descripcion','Propiedad_Direccion',
+             'Numero_Habitaciones','Propiedad_Costo','imagen']
+
+    def form_valid(self, form):
+        form.instance.publisher = self.request.user
+        return super().form_valid(form)
 
     def test_func(self):
         user_id = self.request.user.id
