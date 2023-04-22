@@ -19,4 +19,4 @@ class Profile(models.Model):
     Descripcion = models.CharField(max_length=100)
     Email = models.EmailField(blank=True)
     Web = models.URLField(null=True,blank=True)
-    imagen = models.ImageField(upload_to="profiles", null=True, blank=True)
+    imagen = models.ImageField(upload_to="profiles")
