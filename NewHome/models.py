@@ -20,3 +20,8 @@ class Profile(models.Model):
     Email = models.EmailField(blank=True)
     Web = models.URLField(null=True,blank=True)
     imagen = models.ImageField(upload_to="profiles")
+
+class Mensaje(models.Model):
+    mensaje = models.TextField(max_length=1000)
+    email = models.EmailField()
+    destinatario = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="destinatario")

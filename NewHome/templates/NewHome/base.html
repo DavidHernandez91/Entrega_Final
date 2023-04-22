@@ -73,11 +73,15 @@
             <a class="nav-link" href="{% url 'propiedades-list' %}">Propiedades</a>
            </li>
             {% if user.is_authenticated %}
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'logout' %}"> {{user.username}} | Logout</a>
-                </li>
+                
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'profile-create' %}"> Crear Perfil</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'mensaje-list' %}"> Mis Mensajes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}"> {{user.username}}/Logout</a>
                 </li>
               {% else %}  
                 <li class="nav-item">
@@ -87,6 +91,9 @@
                   <a class="nav-link" href="{% url 'signup' %}">Registrarme</a>
                 </li>
               {% endif %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'mensaje-create' %}">Nuevo Mensaje</a>
+                </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -102,7 +109,8 @@
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-end"><a href="{% url 'index' %}">Back to top</a></p>
-    <p>© 2017–2021 Company, Inc. · <a href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Privacy</a> · <a href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Terms</a></p>
+    <p>© 2017–2021 Company, Inc. · <a href="{% url 'AboutMe' %}">About Me
+    </a> 
   </footer>
   
     <script src="{% static 'NewHome/js/bootstrap.bundle.min.js' %}"></script>
