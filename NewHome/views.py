@@ -76,6 +76,7 @@ class Logout(LogoutView):
 class ProfileCreate(LoginRequiredMixin, CreateView):
     model = Profile
     success_url = reverse_lazy("index")
+    context_object_name = "profiles"
     fields = ['Nombre','Descripcion',
              'Email','Web','imagen']
 
@@ -92,15 +93,17 @@ class ProfileUpdate(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
     def test_func(self):
         user_id = self.request.user.id
         profile_id = self.kwargs.get('pk')
-        return Profile.objects.filter(user=user_id, id=profile_id).exists()
+        return Profile.objects.filter(user=profile_id, id=profile_id).exists()
 
     def handle_no_permission(self):
-        return render(self.request, "NewHome/profile_notfound.html")
+        return render(self.request, "NewHome/profile_not_found.html")
+
 
 class MensajeCreate(CreateView):
     model = Mensaje
     fields = '__all__'
     success_url = reverse_lazy("index")
+
 
 
 class  MensajeList(LoginRequiredMixin, ListView):

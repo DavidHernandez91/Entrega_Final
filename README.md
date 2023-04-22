@@ -6,4 +6,4 @@ El sistema cuenta con diferentes opciones en la cual el usuario al estar loggead
 
 Ademas de esto, los usuario en general podran tener la opcion de ver la lista de propiedades publicadas con sus detalles y enviar mensajes a los propietarios en caso de querer contactarlos o estar interesados.
 
-Video: 
+Video: https://youtu.be/9XAsKFmnzvk
