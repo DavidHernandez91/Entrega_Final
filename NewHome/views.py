@@ -36,8 +36,8 @@ class PropiedadesUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         user_id = self.request.user.id
-        post_id = self.kwargs.get('pk')
-        return Propiedades.objects.filter(publisher=user_id, id=post_id).exists()
+        propiedades_id = self.kwargs.get('pk')
+        return Propiedades.objects.filter(publisher=user_id, id=propiedades_id).exists()
 
     def handle_no_permission(self):
         return render(self.request, "NewHome/not_found.html")
@@ -48,8 +48,8 @@ class PropiedadesDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         user_id = self.request.user.id
-        post_id = self.kwargs.get('pk')
-        return Propiedades.objects.filter(publisher=user_id, id=post_id).exists()
+        propiedades_id = self.kwargs.get('pk')
+        return Propiedades.objects.filter(publisher=user_id, id=propiedades_id).exists()
 
     def handle_no_permission(self):
         return render(self.request, "NewHome/not_found.html")
@@ -77,7 +77,14 @@ class ProfileCreate(LoginRequiredMixin, CreateView):
         profile.save()
         return super().form_valid(form)
 
-class ProfileUpdate(LoginRequiredMixin,UpdateView):
+class ProfileUpdate(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
     model = Profile
     fields = '__all__'
 
+    def test_func(self):
+        user_id = self.request.user.id
+        profile_id = self.kwargs.get('pk')
+        return Profile.objects.filter(user=user_id, id=profile_id).exists()
+
+    def handle_no_permission(self):
+        return render(self.request, "NewHome/profile_notfound.html")
